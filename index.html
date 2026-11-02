@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Красивые места для отпуска — путеводитель</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background-color: #f9f9f9;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 40px 0 20px;
+      text-align: center;
+      border-bottom: 5px solid #f39c12;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    nav {
+      background-color: #2c3e50;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background-color: #f39c12;
+      color: #2c3e50;
+    }
+    main section {
+      padding: 50px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    main section:last-child {
+      border-bottom: none;
+    }
+    h2 {
+      font-size: 2rem;
+      color: #1e3c72;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: #f39c12;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+    h3 {
+      font-size: 1.6rem;
+      color: #2a5298;
+      margin: 30px 0 15px;
+    }
+    h4 {
+      font-size: 1.3rem;
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    article {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    article img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    .article-content {
+      padding: 20px;
+    }
+    .article-content p {
+      margin-bottom: 15px;
+    }
+    figure {
+      margin: 20px 0;
+      text-align: center;
+    }
+    figure img {
+      border-radius: 8px;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    figcaption {
+      font-style: italic;
+      color: #7f8c8d;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+    details {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      cursor: pointer;
+    }
+    summary {
+      font-weight: bold;
+      color: #2c3e50;
+      outline: none;
+    }
+    details p {
+      margin-top: 10px;
+      padding-left: 10px;
+      border-left: 3px solid #f39c12;
+    }
+    time {
+      font-weight: bold;
+      color: #e67e22;
+    }
+    address {
+      font-style: normal;
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    address a {
+      color: #2a5298;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 0.9rem;
+    }
+    @media (min-width: 768px) {
+      .destinations-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      header h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2.2rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .destinations-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Красивые места для отпуска</h1>
+      <p>Откройте для себя лучшие направления для незабываемого отдыха</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">О проекте</a></li>
+      <li><a href="#destinations">Направления</a></li>
+      <li><a href="#tips">Советы</a></li>
+      <li><a href="#gallery">Галерея</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>О проекте</h2>
+        <p>Этот сайт создан для тех, кто мечтает об идеальном отпуске и ищет вдохновение. Здесь собраны описания самых красивых уголков планеты: от тропических пляжей до заснеженных гор. Мы расскажем, когда лучше ехать, что посмотреть и как сделать отдых незабываемым.</p>
+        <figure>
+          <img src="https://picsum.photos/seed/travel/800/400" alt="Панорамный вид на горы и море в лучах заката">
+          <figcaption>Красота природы вдохновляет на путешествия</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="destinations">
+      <div class="container">
+        <h2>Популярные направления</h2>
+        <p>Выберите тип отдыха по душе: пляжный, горнолыжный или экскурсионный. В каждом разделе вы найдёте подробное описание.</p>
+        <section>
+          <h3>Пляжный отдых</h3>
+          <div class="destinations-grid">
+            <article>
+              <img src="https://picsum.photos/seed/bali/600/400" alt="Тропический пляж Бали с белым песком и пальмами">
+              <div class="article-content">
+                <h4>Бали, Индонезия</h4>
+                <p>Остров богов предлагает идеальные пляжи, серфинг и уникальную культуру. Лучшее время для посещения — <time datetime="2025-05-01">май</time> — <time datetime="2025-09-30">сентябрь</time>.</p>
+                <details>
+                  <summary>Что посмотреть?</summary>
+                  <p>Храм Улувату, рисовые террасы Тегаллаланг и пляж Нуса-Дуа.</p>
+                </details>
+              </div>
+            </article>
+            <article>
+              <img src="https://picsum.photos/seed/maldives/600/400" alt="Мальдивские острова с кристально чистой водой и бунгало">
+              <div class="article-content">
+                <h4>Мальдивы</h4>
+                <p>Райские острова с бирюзовой водой и коралловыми рифами. Идеально для романтического отпуска. Сезон — <time datetime="2025-11-01">ноябрь</time> — <time datetime="2026-04-30">апрель</time>.</p>
+                <details>
+                  <summary>Особенности</summary>
+                  <p>Обязательно попробуйте снорклинг и ужин на пляже.</p>
+                </details>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section>
+          <h3>Горнолыжные курорты</h3>
+          <div class="destinations-grid">
+            <article>
+              <img src="https://picsum.photos/seed/alps/600/400" alt="Заснеженные вершины Альп и горнолыжный склон">
+              <div class="article-content">
+                <h4>Альпы, Швейцария</h4>
+                <p>Классика горнолыжного отдыха. Курорты Церматт и Санкт-Мориц ждут вас. Сезон катания: <time datetime="2025-12-01">декабрь</time> — <time datetime="2026-03-31">март</time>.</p>
+                <details>
+                  <summary>Совет</summary>
+                  <p>Арендуйте снаряжение заранее и не забудьте про страховку.</p>
+                </details>
+              </div>
+            </article>
+            <article>
+              <img src="https://picsum.photos/seed/sochi/600/400" alt="Горные склоны Красной Поляны в Сочи">
+              <div class="article-content">
+                <h4>Красная Поляна, Россия</h4>
+                <p>Отличный вариант для тех, кто не хочет далеко лететь. Современные трассы и красивая природа. Сезон: <time datetime="2025-12-15">декабрь</time> — <time datetime="2026-04-10">апрель</time>.</p>
+                <details>
+                  <summary>Где остановиться?</summary>
+                  <p>Отели курорта «Роза Хутор» предлагают комфорт и удобный доступ к подъёмникам.</p>
+                </details>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section>
+          <h3>Экскурсионный отдых</h3>
+          <div class="destinations-grid">
+            <article>
+              <img src="https://picsum.photos/seed/paris/600/400" alt="Эйфелева башня в Париже на фоне заката">
+              <div class="article-content">
+                <h4>Париж, Франция</h4>
+                <p>Город любви и искусства. Посетите Лувр, Нотр-Дам и прогуляйтесь по Монмартру. Лучшее время — <time datetime="2025-04-01">весна</time> или <time datetime="2025-09-01">осень</time>.</p>
+                <details>
+                  <summary>Совет</summary>
+                  <p>Купите музейную карту Paris Museum Pass, чтобы сэкономить время.</p>
+                </details>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="container">
+        <h2>Советы путешественникам</h2>
+        <p>Чтобы отпуск прошёл гладко, воспользуйтесь нашими рекомендациями.</p>
+        <details>
+          <summary>Как сэкономить на билетах?</summary>
+          <p>Бронируйте авиабилеты за 2–3 месяца до поездки, следите за акциями и используйте агрегаторы для сравнения цен.</p>
+        </details>
+        <details>
+          <summary>Что положить в аптечку?</summary>
+          <p>Возьмите обезболивающее, средства от аллергии, пластыри и лекарства от расстройства желудка. Не забудьте про солнцезащитный крем.</p>
+        </details>
+        <details>
+          <summary>Как выбрать отель?</summary>
+          <p>Читайте отзывы на нескольких платформах, обращайте внимание на расположение и наличие бесплатной отмены бронирования.</p>
+        </details>
+        <p><mark>Важно!</mark> Всегда проверяйте срок действия загранпаспорта и визовые требования перед поездкой.</p>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <h2>Галерея красивых мест</h2>
+        <div class="destinations-grid">
+          <figure>
+            <img src="https://picsum.photos/seed/greece/600/400" alt="Белые дома и синие купола Санторини на фоне моря">
+            <figcaption>Санторини, Греция — мечта романтиков</figcaption>
+          </figure>
+          <figure>
+            <img src="https://picsum.photos/seed/norway/600/400" alt="Фьорды Норвегии с крутыми скалами и водопадами">
+            <figcaption>Норвежские фьорды — суровая красота севера</figcaption>
+          </figure>
+          <figure>
+            <img src="https://picsum.photos/seed/japan/600/400" alt="Гора Фудзи и цветущая сакура в Японии">
+            <figcaption>Япония весной — время цветения сакуры</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="container">
+        <h2>Контакты</h2>
+        <p>Есть вопросы или хотите поделиться своим любимым местом? Напишите нам!</p>
+        <address>
+          <p>Email: <a href="mailto:travel@example.com">travel@example.com</a></p>
+          <p>Телефон: <a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
+          <p>Адрес: г. Москва, ул. Путешественников, д. 1</p>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Красивые места для отпуска. Все права защищены.</p>
+      <p>Сайт создан в учебных целях.</p>
+    </div>
+  </footer>
+</body>
+</html>
